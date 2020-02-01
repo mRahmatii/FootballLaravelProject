@@ -1,0 +1,26 @@
+
+a,
+a:hover,
+a:focus
+{
+    text-decoration: none;
+}
+
+h1
+{
+    margin: 0;
+    font-family:$myFontFamily,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight:bold;
+}
+
+.display-none
+{
+    display: none;
+}
+
+.display-flex
+{
+    @include display-flex;
+}
+
+

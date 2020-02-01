@@ -1,0 +1,63 @@
+.home
+{
+    min-height: 100vh;
+    background-color: $color-grey-light-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+
+    @media only screen and (max-width: $bp-large) {
+        padding: 0;
+    }
+
+}
+
+.box
+{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: white;
+        border-radius: 3px;
+        box-shadow: 0 2rem 6rem rgba(0,0,0,0.3);
+        width: 600px;
+        height: 600px;
+    display: inline-block;
+
+    @media only screen and (max-width: $bp-large) {
+        height: auto;
+        overflow-y:auto ;
+        overflow-x: hidden;
+    }
+
+    &__header
+    {
+        flex: 0 1 auto;
+        overflow: hidden;
+        box-shadow: 0 3px 5px 0 rgba(0,0,0,0.3);
+        z-index: 1;
+        padding: 2rem 0;
+
+    }
+
+    &__form
+    {
+        flex: 0 1 auto;
+        padding: 2rem 6rem;
+
+    }
+
+    &__form-two,&__form-three{
+        display: none;
+    }
+
+    &__footer{
+        margin-top: 2rem;
+    }
+}
+
+
+
+

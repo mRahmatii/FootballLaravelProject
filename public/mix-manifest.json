@@ -1,0 +1,6 @@
+{
+    "/js/backend.min.js": "/js/backend.min.js",
+    "/js/frontend.min.js": "/js/frontend.min.js",
+    "/css/frontend.min.css": "/css/frontend.min.css",
+    "/css/backend.min.css": "/css/backend.min.css"
+}

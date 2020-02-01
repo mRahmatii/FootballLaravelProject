@@ -1,0 +1,177 @@
+
+@mixin display-flex()
+{
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin flexRow()
+{
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+}
+
+@mixin flexColumn()
+{
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: column wrap;
+    -webkit-flex-flow: column wrap;
+}
+
+@mixin flexColumnCenter()
+{
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: column wrap;
+    -webkit-flex-flow: column wrap;
+    webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+@mixin flexCenter()
+{
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+@mixin flexJustifyCenter()
+{
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+@mixin flexAlignCenter()
+{
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+@mixin flexSpaceBetween()
+{
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+@mixin overlay()
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    display: block;
+}
+
+@mixin positionCenter()
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+@mixin positionCenterByWidth($x,$y)
+{
+    width: $x;
+    height: $y;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+@mixin gradientVertical()
+{
+    background: rgb(255,209,3);
+    background: -moz-linear-gradient(159deg, rgba(255,209,3,0.75) 0%, rgba(30,31,113,0.89) 45%);
+    background: -webkit-linear-gradient(159deg, rgba(255,209,3,0.75) 0%, rgba(30,31,113,0.89) 45%);
+    background: linear-gradient(159deg, rgba(255,209,3,0.75) 0%, rgba(30,31,113,0.89) 45%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffd103",endColorstr="#1e1f71",GradientType=1);
+}
+
+@mixin gradientHorizental()
+{
+    background: rgb(255,209,3);
+    background: -moz-linear-gradient(128deg, rgba(255,209,3,0.7743872549019608) -20%, rgba(39,39,39,0.7687850140056023) 50%);
+    background: -webkit-linear-gradient(128deg, rgba(255,209,3,0.7743872549019608) -20%, rgba(39,39,39,0.7687850140056023) 50%);
+    background: linear-gradient(128deg, rgba(255,209,3,0.7743872549019608) -20%, rgba(39,39,39,0.7687850140056023) 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffd103",endColorstr="#272727",GradientType=1);
+}
+
+@mixin gradientDark()
+{
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3085609243697479) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3085609243697479) 100%);
+    background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3085609243697479) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+}

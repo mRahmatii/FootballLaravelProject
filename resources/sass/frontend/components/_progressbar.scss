@@ -1,0 +1,62 @@
+.progressbar{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: space-around;
+    align-items: center;
+
+
+
+    &__circle
+    {
+        display: inline-block;
+        border: solid $color-grey-light-2 3px;
+        border-radius: 50%;
+        height: inherit;
+        width: inherit;
+    }
+
+    &__item
+    {
+        position: relative;
+        height: 20px;
+        width: 20px;
+
+        &:not(:first-child) {
+            &:before
+            {
+                content: '';
+                width: 180px;
+                height: 3px;
+                position: absolute;
+                top: 45%;
+                left: 100%;
+
+                background: linear-gradient(to left, $color-primary 50%, $color-grey-light-2 50%);
+                background-size: 200% 100%;
+                background-position:left bottom;
+                transition: all 2s ease-in-out;
+            }
+        }
+    }
+
+    .active{
+
+        .progressbar__circle
+        {
+
+            border: solid $color-primary 3px;
+
+            //animation: progressMove 5s;
+            //transition: all 2s;
+            //background-position: right bottom;
+        }
+        &:before
+        {
+            //background: $color-primary;
+            background-position: right bottom;
+
+        }
+
+    }
+}

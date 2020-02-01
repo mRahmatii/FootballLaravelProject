@@ -1,0 +1,33 @@
+.header{
+
+    &__logo
+    {
+        height: 4rem;
+    }
+
+    &__navbar{
+        padding: 1rem 8rem;
+    }
+
+    &__nav-item:hover
+    {
+        background-color: $color-primary;
+        border-radius:3px
+
+    }
+
+    @media only screen and (max-width: $bp-large) {
+        display: none;
+    }
+
+
+
+
+}
+
+.mybtn-outline{
+    border: 1px solid $color-grey-dark-2;
+    &:hover{
+        background-color: $color-primary;
+    }
+}

@@ -1,0 +1,26 @@
+
+.btn-next,.btn-submit{
+    color: $color-grey-light-2;
+    background: $color-primary;
+    width: 50%;
+    &:hover{
+        background:$color-grey-dark-2;
+        color: black;
+    }
+}
+.btn-previous
+{
+    color: $color-grey-dark-2;
+    border: 1px;
+    width: 50%;
+    &:hover{
+        background:$color-primary;
+        color: white;
+    }
+}
+
+.btn-custom
+{
+    background:$color-primary;
+    color: white;
+}

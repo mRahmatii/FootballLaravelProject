@@ -1,0 +1,63 @@
+label {
+  display: block;
+}
+
+.select2 {
+  width: 100% !important;
+}
+
+.my-btn-submit {
+  width: 50rem;
+}
+
+.filters-btn {
+  margin: 1rem 1.5rem;
+}
+
+.filters-section {
+  margin: 1rem 1.5rem;
+  display: none;
+}
+.filters-section button {
+  margin: 1rem 0;
+}
+
+.operation a {
+  padding: 0.5rem !important;
+}
+.operation button {
+  padding: 0.5rem !important;
+}
+
+.edit {
+  margin: 0 0 3rem 0;
+}
+
+.input-file > img {
+  width: 150px;
+  height: 145px;
+  display: block;
+  margin: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 3px;
+}
+
+.input-file .remove {
+  position: absolute;
+  cursor: pointer;
+}
+
+.bootstrap-filestyle {
+  width: 150px;
+  margin: auto;
+}
+
+.bootstrap-filestyle .btn {
+  display: block;
+  width: 100%;
+}
+
+.access-icon {
+  display: contents;
+}
