@@ -73,23 +73,6 @@
                                     <input autocomplete="off" name="toDate" type="text" class="date form-control" placeholder="تا تاریخ">
                                 </div>
 
-                                <div class="form-group col-md-3">
-                                    <select class="form-control selectpicker" name="city_id">
-                                        <option value="">شهر</option>
-                                        @foreach($cities as $city)
-                                            <option class="form-control" value="{{$city->id}}">{{$city->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group col-md-3">
-                                    <select class="form-control" name="order">
-                                        <option value="">انتخاب کنید</option>
-                                        <option value="desc">نزولی</option>
-                                        <option value="asc">صعودی</option>
-                                    </select>
-                                </div>
-
                             </div>
 
 

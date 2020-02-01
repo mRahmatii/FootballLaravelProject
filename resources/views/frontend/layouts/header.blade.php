@@ -4,7 +4,7 @@
     <nav class="navbar main-menu navbar-expand-lg navbar-light header__navber">
         <div class="navbar-brand header__logo-box">
             <a href="#">
-                <img  class="header__logo" src="#" alt="football">
+                <img  class="header__logo" src="{{asset('img/logo.png')}}" alt="football">
             </a>
         </div>
 
@@ -100,24 +100,11 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="form-group col-md-4">
-                                        <input class="checkbox" type="checkbox" name="remember"
-                                               id="remember" {{ old('remember') ? 'checked' : '' }}>
-                                        <label for="remember">مرا بخاطر بسپار</label>
-                                    </div>
                                     <div class="col-md-6">
                                         <button type="submit" class="btn btn-submit">ورود</button>
                                     </div>
                                 </div>
 
-                                <div class="row form-group">
-
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            رمز خود را فراموش کرده اید؟
-                                        </a>
-                                    @endif
-                                </div>
                             </form>
 
                         </div>

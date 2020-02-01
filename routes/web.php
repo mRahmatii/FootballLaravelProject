@@ -24,7 +24,7 @@ Auth::routes(['register' => false]);
 
 Route::post('admin/users/store','UserController@store')->name('users.store');
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin','middleware'=>'auth'], function() {
 
 
     Route::get('users', 'UserController@index')->name('users.index');

@@ -29,6 +29,18 @@
                     <form  action="{{route('playerrs.update', $playerr->id)}}" method="post" autocomplete="off" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+
+                        <div class="form-group col-md-4 text-center">
+                            <label for="profile" class="control-label"> بارگذاری عکس پروفایل</label>
+
+                            <div class="input-file">
+                                <img class="pic-preview" src="{{file_exists(public_path('img/users/'.$playerr->id))?asset('img/users/profiles/'.$playerr->id.'.jpg'):asset('img/user-profile-loading.jpg')}}">
+                                <input name="profile" type="file" class="form-control" data-content="بارگذاری عکس پروفایل ضروری است">
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
                         <div class="form-group col-md-4">
                             <label for="first_name" class="control-label">نام تیم</label>
 
@@ -76,6 +88,17 @@
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('backend/libs/bootstrap-filestyle/bootstrap-filestyle.min.js') }}"></script>
     <script src="{{ asset('backend/js/players/edit.js') }}"></script>
+@endsection
+
+
+@section('stylesheets')
+<style>
+    .btn-custom
+    {
+        background-color: mediumpurple;
+    }
+</style>
 @endsection
 

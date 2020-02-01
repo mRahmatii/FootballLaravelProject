@@ -29,6 +29,18 @@
                     <form  action="{{route('players.update', $player->id)}}" method="post" autocomplete="off" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+
+                        <div class="form-group col-md-4 text-center">
+                            <label for="profile" class="control-label"> بارگذاری عکس پروفایل</label>
+
+                            <div class="input-file">
+                                <img class="pic-preview" src="{{file_exists(public_path('img/users/profiles/'.$player->id.'.jpg'))?asset('img/users/profiles/'.$player->id.'.jpg'):asset('img/user-profile-loading.jpg')}}">
+                                <input name="profile" type="file" class="form-control" data-content="بارگذاری عکس پروفایل ضروری است">
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
                         <div class="form-group col-md-4">
                             <label for="first_name" class="control-label">نام تیم</label>
 
@@ -54,7 +66,7 @@
                         <div class="form-group col-md-4">
                             <label for="team_ids" class="control-label">نام تیم</label>
 
-                            @include('backend.Partials.teams.dropdown' ,['multiple'=>true,empty($teams)?:'old'=>$teams])
+                            @include('backend.Partials.teams.dropdown' ,['multiple'=>true,empty($player->team_ids)?:'old'=>$player->team_ids])
                             @if ($errors->has('team_ids'))
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('team_ids') }}</strong>
@@ -77,6 +89,16 @@
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('backend/libs/bootstrap-filestyle/bootstrap-filestyle.min.js') }}"></script>
     <script src="{{ asset('backend/js/players/edit.js') }}"></script>
+@endsection
+
+@section('stylesheets')
+    <style>
+        .btn-custom
+        {
+            background-color: mediumpurple;
+        }
+    </style>
 @endsection
 

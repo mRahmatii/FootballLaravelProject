@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PlayerRequest;
 use App\Player;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class PlayerController extends Controller
 {
@@ -59,7 +60,25 @@ class PlayerController extends Controller
 
     public function store(PlayerRequest $request)
     {
-        Player::create($request->all());
+        $user=Player::create($request->all());
+
+        if($request->profile)
+        {
+            $mime = $request->profile->getClientOriginalExtension();
+
+            $allowedMimeTypes = ['jpeg', 'gif', 'png'];
+
+            if (!in_array($mime, $allowedMimeTypes)) {
+                return redirect()->back()->with('delete', 'image format have problem');
+            }
+
+            $img_icon = Image::make($request->profile);
+
+            $img_icon->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('img/users/profiles/' . $user->id . '.jpg'), 80, 'jpg');
+
+        }
 
         return redirect('admin/players')->with('message','با تشکر');
     }
@@ -74,20 +93,29 @@ class PlayerController extends Controller
         $title = 'ایجاد بازیکن';
         $subTitle = 'در اینجا می توانیدبازیکن جدید را اضافه کنید ';
 
-        $teams=[];
-        if($player->teams)
-        {
-            foreach ($player->teams as $team)
-            {
-                $teams[]=$team->pivot->teamm_id;
-            }
-        }
-
-        return view('backend.players.edit',compact('title','subTitle','player','teams'));
+        return view('backend.players.edit',compact('title','subTitle','player'));
     }
 
     public function update(PlayerRequest $request, Player $player)
     {
+        if($request->profile)
+        {
+            $mime = $request->profile->getClientOriginalExtension();
+
+            $allowedMimeTypes = ['jpeg', 'gif', 'png','jpg'];
+
+            if (!in_array($mime, $allowedMimeTypes))
+            {
+                return redirect()->back()->with('delete', 'image format have problem');
+            }
+
+            $img_icon = Image::make($request->profile);
+
+            $img_icon->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('img/users/profiles/' . $player->id . '.jpg'), 80, 'jpg');
+        }
+
         $player->update($request->all());
 
         return redirect('admin/players')->with('message','با تشکر');

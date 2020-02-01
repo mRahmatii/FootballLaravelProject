@@ -15,8 +15,8 @@ class CreatePlayerrsTable extends Migration
     {
         Schema::create('playerrs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('first_name',10);
-            $table->string('last_name',10);
+            $table->string('first_name');
+            $table->string('last_name');
             $table->timestamps();
         });
     }

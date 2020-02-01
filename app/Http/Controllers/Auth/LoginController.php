@@ -32,7 +32,7 @@ class LoginController extends Controller
     {
         $user=Auth::user();
 
-        if($user->type==1){
+        if($user){
             return 'admin/users';
         }else{
             return '/';

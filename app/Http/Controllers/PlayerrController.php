@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PlayerRequest;
 use App\Playerr;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class PlayerrController extends Controller
 {
@@ -60,6 +61,24 @@ class PlayerrController extends Controller
     {
         $player=Playerr::create($request->all());
 
+        if($request->profile)
+        {
+            $mime = $request->profile->getClientOriginalExtension();
+
+            $allowedMimeTypes = ['jpeg','gif','png'];
+
+            if(! in_array($mime, $allowedMimeTypes))
+            {
+                return redirect()->back()->with('delete','image format have problem');
+            }
+
+            $img_icon = Image::make($request->profile);
+
+            $img_icon->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('img/users/profiles/'.$player->id.'.jpg'),80,'jpg');
+        }
+
         $player->teams()->attach($request->team_ids);
 
         return redirect('admin/playerrs')->with('message','با تشکر');
@@ -89,6 +108,24 @@ class PlayerrController extends Controller
 
     public function update(PlayerRequest $request, Playerr $playerr)
     {
+        if($request->profile)
+        {
+            $mime = $request->profile->getClientOriginalExtension();
+
+            $allowedMimeTypes = ['jpeg', 'gif', 'png'];
+
+            if (!in_array($mime, $allowedMimeTypes)) {
+                return redirect()->back()->with('delete', 'image format have problem');
+            }
+
+            $img_icon = Image::make($request->profile);
+
+            $img_icon->resize(300, null, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('img/users/profiles/' . $playerr->id . '.jpg'), 80, 'jpg');
+        }
+
+
         $playerr->update($request->all());
         $playerr->teams()->sync($request->team_ids);
 

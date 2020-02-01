@@ -12,7 +12,6 @@
                 <tr>
                     <th>نام</th>
                     <th>نام خانوادگی</th>
-                    <th>نام شهر</th>
                     <th>تاریخ ایجاد</th>
                     <th>عملیات</th>
                 </tr>
@@ -22,7 +21,6 @@
                         <tr data-id="{{$user->id}}">
                             <td>{{$user->first_name}}</td>
                             <td>{{$user->last_name}}</td>
-                            <td>{{$user->city->name}}</td>
                             @php
                                 $PersianregisteredDate= new Verta($user->created_at)
                             @endphp
@@ -59,8 +57,6 @@
                 'limit'=>!empty($limit)?$limit:10,
                 'fromDate'=>!empty($fromDate)?$fromDate:'',
                 'toDate'=>!empty($toDate)?$toDate:'',
-                'city'=>!empty($city)?$city:'',
-                'order'=>!empty($order)?$order:'',
 
             ))->links()
             }}

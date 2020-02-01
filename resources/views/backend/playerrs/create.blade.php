@@ -28,6 +28,18 @@
                 <div class="box-body">
                     <form  action="{{route('playerrs.store')}}" method="post" autocomplete="off" enctype="multipart/form-data">
                         @csrf
+
+                        <div class="form-group col-md-4 text-center">
+                            <label for="profile" class="control-label"> بارگذاری عکس پروفایل</label>
+
+                            <div class="input-file">
+                                <img class="pic-preview" src="{{asset('img/user-profile-loading.jpg')}}">
+                                <input name="profile" type="file" class="form-control" data-content="بارگذاری عکس پروفایل ضروری است">
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+
                         <div class="form-group col-md-4">
                             <label for="first_name" class="control-label">نام </label>
 
@@ -77,6 +89,48 @@
     </div>
 @endsection
 @section('scripts')
+    <script src="{{ asset('backend/libs/bootstrap-filestyle/bootstrap-filestyle.min.js') }}"></script>
     <script src="{{ asset('backend/js/players/create.js') }}"></script>
 @endsection
 
+@section('stylesheets')
+    <style>
+        .input-file >img
+        {
+            width: 150px;
+            height: 145px;
+            display: block;
+            margin: auto;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+
+        .input-file .remove
+        {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .bootstrap-filestyle
+        {
+            width: 150px;
+            margin: auto;
+        }
+
+        .bootstrap-filestyle .btn
+        {
+            display: block;
+            width: 100%;
+        }
+
+        .group-span-filestyle
+        {
+            width: 100%;
+        }
+
+        .btn-custom
+        {
+            background-color: mediumpurple;
+        }
+    </style>
+@endsection

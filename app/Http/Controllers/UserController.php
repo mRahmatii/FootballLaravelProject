@@ -16,16 +16,12 @@ class UserController extends Controller
         $subTitle = 'در اینجا می توانید لیست کاربران را مشاهده کنید ';
         $limit = 10;
         $text = $request->text;
-        $city = $request->city;
-        $order=$request->order;
 
         $helper=new PublicFunctionController();
         $fromDate = $helper->getGeorgianDate($request->fromDate);
         $toDate = $helper->getGeorgianDate($request->toDate);
 
-        $query = User::where('type', 2)->with(['city']);
-
-        $cities=City::where('parent_id','!=',0)->get(['name','id']);
+        $query = User::select();
 
 
         if (!empty($request->text))
@@ -41,11 +37,6 @@ class UserController extends Controller
             $limit = $request->limit;
         }
 
-        if (!empty($request->city))
-        {
-            $query->where('city_id',$city);
-        }
-
 
         if(!empty($request->toDate) && !empty($request->fromDate))
         {
@@ -54,14 +45,12 @@ class UserController extends Controller
             });
         }
 
-        $users = $query->orderBy('created_at', !empty($order) ? $order :'desc')->paginate($limit)
+        $users = $query->orderBy('created_at','desc')->paginate($limit)
                 ->appends(
                     array(
                         'text' => !empty($text) ? $text : '',
-                        'city' => !empty($city) ? $city : '',
                         'fromDate' => !empty($fromDate) ? $fromDate : '',
                         'toDate' => !empty($toDate) ? $toDate : '',
-                        'order'=> !empty($order) ? $order : '',
                     )
                 );
 
@@ -70,36 +59,24 @@ class UserController extends Controller
         {
             return response()->json(array(
                 'body' => view('backend.Elements.users',
-                    compact('users', 'text', 'title', 'subTitle', 'cities','users'))->render()
+                    compact('users', 'text', 'title', 'subTitle','users'))->render()
             ), JSON_UNESCAPED_UNICODE);
         }
 
-        return View('backend.users.index', compact('title', 'subTitle','cities','users'));
+        return View('backend.users.index', compact('title', 'subTitle','users'));
 
     }
 
     public function store(Request $request)
     {
+
         $input=$request->all();
 
         $input['password']=Hash::make($request->password);
 
+        User::create($input);
 
-        $user=User::create($input);
-
-        $img_icon = Image::make($request->profile);
-
-        $img_icon->resize(300, null, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save(public_path('img/users/profiles/'.$user->id.'.jpg'),80,'jpg');
-
-        $img_melli = Image::make($request->melli);
-
-        $img_melli->resize(300, null, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save(public_path('img/users/proof/'.$user->id.'.jpg'),80,'jpg');
-
-        return redirect('/')->with('message','با تشکر');
+        return redirect('/')->with('store','با تشکر از ثبت نام  شما');
 
     }
 
