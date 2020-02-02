@@ -84,7 +84,9 @@ class TeammController extends Controller
     {
         if ($request->ajax()) {
             $team = Teamm::findOrFail($request->id);
-            if ($team->delete()) {
+
+            if ($team->delete())
+            {
                 return response()->json(array(
                     'status' => '1',
                     'message' => 'رکورد شما با موفقیت حذف شد'
@@ -93,7 +95,7 @@ class TeammController extends Controller
             } else {
                 return response()->json(array(
                     'status' => '0',
-                    'message' => 'مشکلی در سرور بهوجود آمده است لطفا دوباره تلاش کنید'
+                    'message' => 'مشکلی در سرور به وجود آمده است لطفا دوباره تلاش کنید'
 
                 ), JSON_UNESCAPED_UNICODE);
             }

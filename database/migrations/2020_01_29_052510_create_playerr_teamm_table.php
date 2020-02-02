@@ -19,8 +19,8 @@ class CreatePlayerrTeammTable extends Migration
             $table->unsignedBigInteger('playerr_id')->index();
 
 
-            $table->foreign('teamm_id')->references('id')->on('teamms');
-            $table->foreign('playerr_id')->references('id')->on('playerrs');
+            $table->foreign('teamm_id')->references('id')->on('teamms')->onDelete('cascade');
+            $table->foreign('playerr_id')->references('id')->on('playerrs')->onDelete('cascade');
 
         });
     }
